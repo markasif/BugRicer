@@ -44,27 +44,34 @@ export default function Faq() {
                     const isOpen = openKey === itemKey;
 
                     return (
-                      <div
-                        key={itemIdx}
-                        className="rounded-xl border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-[#121214]/90 overflow-hidden transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-700/80 shadow-sm"
-                      >
+                      <div key={itemIdx} className="flex flex-col transition-all duration-300">
                         <button
                           onClick={() => toggleAccordion(itemKey)}
-                          className="w-full flex items-center justify-between p-4 text-left text-zinc-800 dark:text-zinc-200 font-bold text-xs md:text-sm focus:outline-none cursor-pointer"
+                          className={`w-full flex items-center justify-between p-4 text-left font-bold text-xs md:text-sm focus:outline-none cursor-pointer transition-all duration-300 shadow-sm border ${
+                            isOpen
+                              ? "border-blue-500/40 dark:border-blue-500/30 bg-blue-500/[0.04] dark:bg-blue-950/20 text-blue-600 dark:text-blue-400 rounded-xl"
+                              : "border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-[#121214]/90 text-zinc-800 dark:text-zinc-200 rounded-xl hover:border-zinc-300 dark:hover:border-zinc-700/80"
+                          }`}
                         >
                           <span>{item.question}</span>
                           <ChevronDown
-                            className={`w-4.5 h-4.5 text-zinc-400 transition-transform duration-300 shrink-0 ml-4 ${isOpen ? "rotate-180 text-blue-500" : ""
-                              }`}
+                            className={`w-4.5 h-4.5 transition-transform duration-300 shrink-0 ml-4 ${
+                              isOpen ? "rotate-180 text-blue-600 dark:text-blue-400" : "text-zinc-400"
+                            }`}
                           />
                         </button>
                         <div
-                          className={`transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "max-h-[220px] border-t border-zinc-100 dark:border-zinc-850" : "max-h-0"
-                            }`}
+                          className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                            isOpen
+                              ? "max-h-[220px] opacity-100 mt-2"
+                              : "max-h-0 opacity-0 mt-0"
+                          }`}
                         >
-                          <p className="p-4 text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed bg-zinc-50/50 dark:bg-[#0c0c0e]/30 font-medium">
-                            {item.answer}
-                          </p>
+                          <div className="rounded-xl border border-zinc-200 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-[#121214]/50 shadow-sm p-4">
+                            <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed font-medium">
+                              {item.answer}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     );

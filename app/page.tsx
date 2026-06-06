@@ -49,7 +49,7 @@ export default function Home() {
           <div className="space-y-12 md:space-y-12 pb-12 md:pb-12">
             <section
               id="home"
-              className="pt-24 sm:pt-32 lg:pt-32 text-center space-y-8 max-w-4xl mx-auto animate-in fade-in duration-1000 px-4 sm:px-0"
+              className="pt-32 text-center space-y-8 max-w-4xl mx-auto animate-in fade-in duration-1000 px-4 sm:px-0"
             >
               <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-blue-500/10 blur-[80px] pointer-events-none animate-pulse-glow" />
 

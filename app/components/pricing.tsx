@@ -213,8 +213,8 @@ export default function Pricing() {
         })}
       </div>
 
-      <div className="flex justify-center mt-12 px-4">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50/50 dark:bg-zinc-800/50 border border-blue-500/20 dark:border-zinc-700/50 backdrop-blur-md shadow-sm">
+      <div className="flex justify-center mt-6 md:mt-12 px-4">
+        <div className="inline-flex items-center gap-2 px-4 py-2 text-[10px] md:text-sm rounded-full bg-blue-50/50 dark:bg-zinc-800/50 border border-blue-500/20 dark:border-zinc-700/50 backdrop-blur-md shadow-sm">
           Launch Offer: <span className="text-blue-400 font-bold">Flat 20% Off</span> on all plans! Limited time only.
         </div>
       </div>

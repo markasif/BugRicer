@@ -79,7 +79,7 @@ export default function PromoBanner({ onClose }: PromoBannerProps) {
 
   return (
     <div
-      className={`promo-banner fixed top-0 left-0 right-0 z-60 bg-blue-600 text-white text-[10px] sm:text-[11px] font-sans font-bold h-9 flex items-center justify-center gap-2 sm:gap-4 px-4 shadow-lg transition-transform duration-300 ease-in-out ${
+      className={`promo-banner fixed top-0 left-0 right-0 z-60 bg-blue-600 text-white text-[9px] sm:text-[11px] font-sans font-bold h-9 flex items-center justify-center gap-2 md:gap-4 px-2 md:px-4 shadow-lg transition-transform duration-300 ease-in-out ${
         isBannerVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
@@ -101,7 +101,7 @@ export default function PromoBanner({ onClose }: PromoBannerProps) {
         <a
           href="/#pricing"
           onClick={handleGetAccessClick}
-          className="bg-white text-blue-600 px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-black uppercase hover:bg-blue-50 transition-colors inline-flex items-center justify-center"
+          className="bg-white text-blue-600 px-1 md:px-2 py-0.5 rounded text-[9px] md:text-[10px] font-black uppercase hover:bg-blue-50 transition-colors inline-flex items-center justify-center"
         >
           Get Access
         </a>

@@ -206,7 +206,7 @@ export default function ApiDocsPage() {
       <main className="flex-1 w-full relative">
         <div className="absolute top-10 left-1/4 w-[350px] h-[350px] rounded-full bg-blue-500/5 dark:bg-blue-500/10 blur-[90px] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-32 pb-8 md:pb-16">
           <div className="flex flex-col items-start gap-4 mb-12">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/20 bg-blue-500/5 text-blue-600 dark:text-blue-400 font-bold text-[10px] sm:text-xs uppercase select-none">
               <Cpu className="w-3.5 h-3.5" />
@@ -495,7 +495,7 @@ export default function ApiDocsPage() {
             </div>
           </div>
 
-          <div className="mt-4 pt-16 border-t border-gray-100 dark:border-zinc-800">
+          <div className="mt-16 pt-8 md:mt-32 md:pt-16 border-t border-gray-100 dark:border-zinc-800">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               <div className="space-y-4">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white">
