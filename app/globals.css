@@ -1,26 +1,166 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FCFCFD;
+  --foreground: #09090B;
+  --navbar: #FFFFFF;
+  --accent-blue: #1447E6;
+  --accent-emerald: #00BC7D;
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(0, 0, 0, 0.06);
+  --card-hover-bg: rgba(255, 255, 255, 0.95);
+  --border-color: rgba(0, 0, 0, 0.08);
+  --nav-active-border: rgba(0, 0, 0, 0.08);
+  --nav-active-bg: rgba(0, 0, 0, 0.05);
+  --scrollbar-track: #FCFCFD;
+  --scrollbar-thumb: #E4E4E7;
+  --scrollbar-thumb-hover: #D4D4D8;
 }
 
-@theme inline {
+.dark {
+  --background: #09090B;
+  --foreground: #F4F4F5;
+  --navbar: #0F0F12;
+  --accent-blue: #1447E6;
+  --accent-emerald: #00BC7D;
+  --card-bg: rgba(15, 15, 18, 0.4);
+  --card-border: rgba(255, 255, 255, 0.03);
+  --card-hover-bg: rgba(15, 15, 18, 0.6);
+  --border-color: rgba(255, 255, 255, 0.05);
+  --nav-active-border: rgba(255, 255, 255, 0.15);
+  --nav-active-bg: rgba(255, 255, 255, 0.05);
+  --scrollbar-track: #09090b;
+  --scrollbar-thumb: #1F1F23;
+  --scrollbar-thumb-hover: #27272a;
+}
+
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-navbar: var(--navbar);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-emerald: var(--accent-emerald);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Premium custom scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Custom glow animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(1) translate(-50%, -50%);
+  }
+  50% {
+    opacity: 0.25;
+    transform: scale(1.1) translate(-50%, -50%);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 8s ease-in-out infinite;
+}
+
+/* Custom bounce slow animation */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(-8px);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.animate-bounce-slow {
+  animation: 3s infinite bounce-slow;
+}
+
+
+/* Glassmorphism utility */
+.glass-effect {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: var(--card-hover-bg);
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: 0 10px 30px -15px rgba(37, 99, 235, 0.2);
+}
+
+/* Active Nav Capsule border and style */
+.nav-active {
+  border: 1px solid var(--nav-active-border);
+  background: var(--nav-active-bg);
+  border-radius: 9999px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hide the blue promo banner (z-60) when mobile sidebar is open */
+body.sidebar-open .promo-banner {
+  display: none !important;
+}
+
+/* Custom backdrop filter overlay for sidebar */
+.sidebar-overlay {
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+}
+
+/* Smooth transition for blurring background elements when sidebar is active */
+main,
+footer,
+.fixed.z-50 {
+  transition: filter 0.3s ease-in-out;
+}
+
+body.sidebar-open main,
+body.sidebar-open footer,
+body.sidebar-open .fixed.z-50 {
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+
